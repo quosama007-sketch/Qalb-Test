@@ -634,10 +634,12 @@
     </style>
 </head>
 <body>
-    <!-- LANGUAGE TOGGLE BUTTON - FIXED POSITION -->
-    <button id="langBtn" style="position: fixed; top: 20px; right: 20px; z-index: 9999; background: #0C7C6D; color: white; border: none; padding: 12px 24px; border-radius: 25px; font-weight: 600; font-size: 1rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-        اردو
-    </button>
+    <!-- URDU TOGGLE BUTTON -->
+    <div style="position: fixed; top: 10px; right: 10px; z-index: 999999;">
+        <button id="urduBtn" style="background: #0C7C6D; color: white; border: 2px solid white; padding: 15px 30px; border-radius: 30px; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 5px 20px rgba(0,0,0,0.3);">
+            اردو
+        </button>
+    </div>
     
     <div class="container">
         <header>
@@ -1932,20 +1934,34 @@
             dismissInstallBanner();
         });
 
-        // Check if running as PWA
-        if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
-            console.log('📱 Running as installed PWA!');
-        }
-
-        // ========================================
-        // URDU LANGUAGE TOGGLE SYSTEM
-        // ========================================
+        // ============================================
+        // URDU LANGUAGE TOGGLE - SIMPLE & WORKING
+        // ============================================
         
-        let currentLang = localStorage.getItem('qalbLang') || 'en';
-        const langBtn = document.getElementById('langBtn');
+        // Store original English scenarios
+        const ENGLISH_SCENARIOS = [
+            'You receive your salary and see an urgent appeal for people suffering in Gaza. What do you normally do?',
+            'You\'re at a restaurant with friends. The bill comes and it\'s more than expected. Your first thought:',
+            'A colleague shows you their new car/phone/house. Your immediate reaction:',
+            'Someone publicly points out your mistake. Your immediate reaction:',
+            'You significantly help someone but nobody knows. How do you feel?',
+            'A security guard/cleaner/waiter treats you poorly without reason. You:',
+            'Your friend excitedly calls - they got a job paying 4x your salary. Your immediate feeling:',
+            'Someone spreads lies about you or harms you. Months later you think of them. You:',
+            'Someone apologizes to you but you know it\'s not sincere. You:',
+            'You\'re alone with your phone/computer. Temptation to view something inappropriate. You:',
+            'It\'s Fajr time. Your alarm goes off. Bed is warm and cozy. You:',
+            'Someone mentions death or you see a funeral. Your immediate reaction:',
+            'You\'re in the middle of prayer. Your mind:',
+            'You face a major setback - job loss, illness, or rejection. Your first thought:',
+            'A crisis hits. You need urgent help. Your first instinct:',
+            'Someone cuts you off in traffic or rudely pushes in line. You:',
+            'You wake up Monday morning. First thoughts about the day ahead are:',
+            'Discussion with someone who disagrees with you. You:'
+        ];
         
-        // Urdu translations for Phase 1 questions
-        const urduQuestions = [
+        // Urdu translations
+        const URDU_SCENARIOS = [
             'آپ کو تنخواہ ملتی ہے اور آپ غزہ میں مصیبت زدہ لوگوں کے لیے فوری اپیل دیکھتے ہیں۔ آپ عام طور پر کیا کرتے ہیں؟',
             'آپ دوستوں کے ساتھ ریستوراں میں ہیں۔ بل آتا ہے اور یہ توقع سے زیادہ ہے۔ آپ کا پہلا خیال:',
             'ایک ساتھی آپ کو اپنی نئی گاڑی/فون/گھر دکھاتا ہے۔ آپ کا فوری ردعمل:',
@@ -1966,60 +1982,50 @@
             'کسی ایسے شخص کے ساتھ بحث جو آپ سے متفق نہیں۔ آپ:'
         ];
         
-        // Store original English questions
-        const englishQuestions = PHASE1_QUESTIONS.map(q => q.scenario);
+        // Current language state
+        let isUrdu = false;
         
-        // Toggle language function
-        langBtn.addEventListener('click', function() {
-            if (currentLang === 'en') {
+        // Get button
+        const urduBtn = document.getElementById('urduBtn');
+        
+        // Toggle function
+        urduBtn.onclick = function() {
+            isUrdu = !isUrdu;
+            
+            if (isUrdu) {
                 // Switch to Urdu
-                currentLang = 'ur';
-                langBtn.textContent = 'English';
+                urduBtn.textContent = 'English';
                 document.body.style.direction = 'rtl';
-                document.body.style.fontFamily = "'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif";
+                document.body.style.fontFamily = "'Noto Nastaliq Urdu', serif";
+                document.querySelector('.subtitle').textContent = 'روحانی قلب کی صحت کا جائزہ';
                 
-                // Update subtitle
-                const subtitle = document.querySelector('.subtitle');
-                if (subtitle) subtitle.textContent = 'روحانی قلب کی صحت کا جائزہ';
-                
-                // Update Phase 1 questions to Urdu
-                PHASE1_QUESTIONS.forEach((q, idx) => {
-                    q.scenario = urduQuestions[idx];
-                });
-                
-                // Re-render if in Phase 1
-                if (currentPhase === 'phase1') {
-                    renderPhase1();
+                // Update all Phase 1 questions
+                for (let i = 0; i < 18; i++) {
+                    PHASE1_QUESTIONS[i].scenario = URDU_SCENARIOS[i];
                 }
                 
             } else {
                 // Switch to English
-                currentLang = 'en';
-                langBtn.textContent = 'اردو';
+                urduBtn.textContent = 'اردو';
                 document.body.style.direction = 'ltr';
                 document.body.style.fontFamily = "'Inter', sans-serif";
+                document.querySelector('.subtitle').textContent = 'Spiritual Heart Health Assessment';
                 
-                // Update subtitle
-                const subtitle = document.querySelector('.subtitle');
-                if (subtitle) subtitle.textContent = 'Spiritual Heart Health Assessment';
-                
-                // Restore English questions
-                PHASE1_QUESTIONS.forEach((q, idx) => {
-                    q.scenario = englishQuestions[idx];
-                });
-                
-                // Re-render if in Phase 1
-                if (currentPhase === 'phase1') {
-                    renderPhase1();
+                // Restore English
+                for (let i = 0; i < 18; i++) {
+                    PHASE1_QUESTIONS[i].scenario = ENGLISH_SCENARIOS[i];
                 }
             }
             
-            localStorage.setItem('qalbLang', currentLang);
-        });
+            // Re-render if in Phase 1
+            if (currentPhase === 'phase1') {
+                renderPhase1();
+            }
+        };
         
-        // Load saved language on start
-        if (currentLang === 'ur') {
-            langBtn.click();
+        // Check if running as PWA
+        if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+            console.log('📱 Running as installed PWA!');
         }
     </script>
 </body>
