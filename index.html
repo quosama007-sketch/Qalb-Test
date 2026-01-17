@@ -20,7 +20,7 @@
     <link rel="manifest" href="manifest.json">
     
     <title>Qalb - Spiritual Heart Health Assessment</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #0C7C6D;
@@ -636,8 +636,11 @@
 <body>
     <div class="container">
         <header>
+            <button id="lang-toggle" onclick="toggleLanguage()" style="position: absolute; top: 20px; right: 20px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 15px rgba(12, 124, 109, 0.3); z-index: 100;">
+                <span id="lang-text">اردو</span>
+            </button>
             <div class="logo">QALB</div>
-            <div class="subtitle">Spiritual Heart Health Assessment</div>
+            <div class="subtitle" id="header-subtitle">Spiritual Heart Health Assessment</div>
             <div class="arabic-subtitle">تقييم صحة القلب الروحي</div>
         </header>
 
@@ -761,7 +764,110 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script>
+        // ==================================================
+        // BILINGUAL SYSTEM - ENGLISH + URDU
+        // ==================================================
+        
+        let currentLang = localStorage.getItem('qalbLang') || 'en';
+        
+        // Complete Urdu translations for all Phase 1 questions
+        const URDU_SCENARIOS = [
+            'آپ کو تنخواہ ملتی ہے اور آپ غزہ میں مصیبت زدہ لوگوں کے لیے فوری اپیل دیکھتے ہیں۔ آپ عام طور پر کیا کرتے ہیں؟',
+            'آپ دوستوں کے ساتھ ریستوراں میں ہیں۔ بل آتا ہے اور یہ توقع سے زیادہ ہے۔ آپ کا پہلا خیال:',
+            'ایک ساتھی آپ کو اپنی نئی گاڑی/فون/گھر دکھاتا ہے۔ آپ کا فوری ردعمل:',
+            'کوئی عوامی طور پر آپ کی غلطی کی نشاندہی کرتا ہے۔ آپ کا فوری ردعمل:',
+            'آپ کسی کی نمایاں مدد کرتے ہیں لیکن کوئی نہیں جانتا۔ آپ کیسا محسوس کرتے ہیں؟',
+            'ایک سیکیورٹی گارڈ/صفائی کرنے والا/خدمت گار بلا وجہ آپ سے برا سلوک کرتا ہے۔ آپ کیا کرتے ہیں؟',
+            'آپ کا دوست پرجوش ہو کر فون کرتا ہے - انہیں آپ کی تنخواہ سے 4 گنا ملازمت مل گئی۔ آپ کا فوری احساس:',
+            'کوئی آپ کے بارے میں جھوٹ پھیلاتا ہے یا آپ کو نقصان پہنچاتا ہے۔ مہینوں بعد آپ ان کے بارے میں سوچتے ہیں۔ آپ:',
+            'کوئی آپ سے معذرت مانگتا ہے لیکن آپ جانتے ہیں کہ یہ مخلص نہیں ہے۔ آپ:',
+            'آپ اپنے فون/کمپیوٹر کے ساتھ تنہا ہیں۔ کچھ نامناسب دیکھنے کی آزمائش آتی ہے۔ آپ:',
+            'فجر کا وقت ہے۔ آپ کا الارم بجتا ہے۔ بستر گرم اور آرام دہ ہے۔ آپ:',
+            'کوئی موت کا ذکر کرتا ہے یا آپ جنازہ دیکھتے ہیں۔ آپ کا فوری ردعمل:',
+            'آپ نماز کے درمیان ہیں۔ آپ کا ذہن:',
+            'آپ کو بڑا دھچکا لگتا ہے - ملازمت چھوٹنا، بیماری، یا مسترد ہونا۔ آپ کا پہلا خیال:',
+            'بحران آتا ہے۔ آپ کو فوری مدد چاہیے۔ آپ کی پہلی فطری رد عمل:',
+            'کوئی ٹریفک میں آپ کو کاٹتا ہے یا لائن میں بدتمیزی سے دھکا دیتا ہے۔ آپ:',
+            'آپ پیر کی صبح جاگتے ہیں۔ آنے والے دن کے بارے میں پہلے خیالات:',
+            'کسی ایسے شخص کے ساتھ بحث جو آپ سے متفق نہیں۔ آپ:'
+        ];
+        
+        // UI translations
+        const UI_TEXT = {
+            en: {
+                scenario: 'Scenario:',
+                beginBtn: 'Begin Assessment',
+                nextBtn: 'Next',
+                backBtn: 'Back',
+                retakeBtn: 'Retake Assessment',
+                saveBtn: 'Save Results',
+                continuePhase2: 'Continue to Phase 2',
+                phase1Title: 'Phase 1: Situational Screening',
+                phase2Title: 'Phase 2: Deep Dive Assessment',
+                transitionTitle: '📊 Phase 1 Complete!',
+                questionOf: 'Question',
+                of: 'of'
+            },
+            ur: {
+                scenario: 'منظرنامہ:',
+                beginBtn: 'جائزہ شروع کریں',
+                nextBtn: 'اگلا',
+                backBtn: 'پیچھے',
+                retakeBtn: 'دوبارہ جائزہ لیں',
+                saveBtn: 'نتائج محفوظ کریں',
+                continuePhase2: 'فیز 2 جاری رکھیں',
+                phase1Title: 'فیز 1: حالاتی جانچ',
+                phase2Title: 'فیز 2: گہرائی میں جائزہ',
+                transitionTitle: '📊 فیز 1 مکمل!',
+                questionOf: 'سوال',
+                of: 'از'
+            }
+        };
+        
+        // Language toggle function
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ur' : 'en';
+            localStorage.setItem('qalbLang', currentLang);
+            
+            // Update button text
+            document.getElementById('lang-text').textContent = currentLang === 'en' ? 'اردو' : 'English';
+            
+            // Update header
+            document.getElementById('header-subtitle').textContent = 
+                currentLang === 'en' ? 'Spiritual Heart Health Assessment' : 'روحانی قلب کی صحت کا جائزہ';
+            
+            // Set text direction and font
+            if (currentLang === 'ur') {
+                document.body.style.direction = 'rtl';
+                document.body.style.fontFamily = "'Noto Nastaliq Urdu', 'Urdu Typesetting', serif";
+                document.querySelector('.container').style.textAlign = 'right';
+            } else {
+                document.body.style.direction = 'ltr';
+                document.body.style.fontFamily = "'Inter', sans-serif";
+                document.querySelector('.container').style.textAlign = 'left';
+            }
+            
+            // Re-render current screen
+            if (currentPhase === 'phase1') {
+                renderPhase1();
+            } else if (currentPhase === 'phase2') {
+                renderPhase2();
+            }
+        }
+        
+        // Initialize language on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            if (currentLang === 'ur') {
+                document.getElementById('lang-text').textContent = 'English';
+                document.getElementById('header-subtitle').textContent = 'روحانی قلب کی صحت کا جائزہ';
+                document.body.style.direction = 'rtl';
+                document.body.style.fontFamily = "'Noto Nastaliq Urdu', 'Urdu Typesetting', serif";
+            }
+        });
+        
+        // ==================================================
         // QUESTION DATABASE
+        // ==================================================
         const PHASE1_QUESTIONS = [
             // Category 1: Wealth (Q1-3)
             {
@@ -1386,21 +1492,23 @@
         function renderPhase1() {
             const question = PHASE1_QUESTIONS[phase1Index];
             const questionNumber = phase1Index + 1;
+            const t = UI_TEXT[currentLang];
+            const scenario = currentLang === 'ur' ? URDU_SCENARIOS[phase1Index] : question.scenario;
             
             let html = `
                 <div class="question">
                     <div class="question-text">
                         <span class="question-number">${questionNumber}</span>
-                        <strong>Scenario:</strong>
+                        <strong>${t.scenario}</strong>
                     </div>
-                    <div class="scenario">${question.scenario}</div>
+                    <div class="scenario">${scenario}</div>
                     <div class="options" id="options-container">
             `;
             
             question.options.forEach((opt, idx) => {
                 const selected = phase1Answers[question.id] === idx ? 'selected' : '';
                 html += `
-                    <div class="option ${selected}" onclick="selectOption(${idx})">
+                    <div class="option ${selected}" onclick="selectOptionPhase1(${idx})">
                         <span class="option-letter">${opt.letter}</span>
                         <span>${opt.text}</span>
                     </div>
@@ -1417,7 +1525,7 @@
             updateNavigationPhase1();
         }
 
-        function selectOption(index) {
+        function selectOptionPhase1(index) {
             const question = PHASE1_QUESTIONS[phase1Index];
             phase1Answers[question.id] = index;
             renderPhase1();
@@ -1426,8 +1534,9 @@
 
         function updateProgressPhase1() {
             const progress = ((phase1Index + 1) / 18) * 100;
+            const t = UI_TEXT[currentLang];
             document.getElementById('progress-bar-phase1').style.width = progress + '%';
-            document.getElementById('progress-text-phase1').textContent = `Question ${phase1Index + 1} of 18`;
+            document.getElementById('progress-text-phase1').textContent = `${t.questionOf} ${phase1Index + 1} ${t.of} 18`;
         }
 
         function updateNavigationPhase1() {
