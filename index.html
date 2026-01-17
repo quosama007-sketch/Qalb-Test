@@ -651,25 +651,25 @@
         <!-- Welcome Screen -->
         <div id="welcome-screen" class="card">
             <div class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
-            <h2>Discover the State of Your Heart</h2>
+            <h2 id="welcome-title">Discover the State of Your Heart</h2>
             <div class="intro-text">
-                <p style="margin-bottom: 20px;">
+                <p style="margin-bottom: 20px;" id="hadith-text">
                     "Indeed, there is in the body a piece of flesh which, if sound, the entire body is sound, 
                     and if corrupt, the entire body is corrupt. Verily, it is the heart."
                     <br><em style="color: var(--gold);">— Prophet Muhammad ﷺ</em>
                 </p>
-                <p style="margin-bottom: 20px;">
+                <p style="margin-bottom: 20px;" id="description-text">
                     This adaptive assessment uses <strong>real-life scenarios</strong> combined with the wisdom of 
                     <strong>Ahmad Zarruq</strong> and <strong>Imam Mawlud</strong> to help you identify and treat spiritual diseases.
                 </p>
-                <p style="color: var(--primary); font-weight: 500;">
+                <p style="color: var(--primary); font-weight: 500;" id="phases-text">
                     Phase 1: 18 situational questions (~10 minutes)<br>
                     Phase 2: Adaptive deep dive if needed (~10 more minutes)<br>
                     Privacy: Your answers stay private on your device
                 </p>
             </div>
             <div class="button-group">
-                <button class="btn btn-primary" onclick="startAssessment()">Begin Assessment</button>
+                <button class="btn btn-primary" id="begin-btn" onclick="startAssessment()">Begin Assessment</button>
             </div>
         </div>
 
@@ -2042,6 +2042,19 @@
                 document.body.style.fontFamily = "'Noto Nastaliq Urdu', serif";
                 document.querySelector('.subtitle').textContent = 'روحانی قلب کی صحت کا جائزہ';
                 
+                // Update welcome screen
+                const welcomeTitle = document.getElementById('welcome-title');
+                const hadithText = document.getElementById('hadith-text');
+                const descriptionText = document.getElementById('description-text');
+                const phasesText = document.getElementById('phases-text');
+                const beginBtn = document.getElementById('begin-btn');
+                
+                if (welcomeTitle) welcomeTitle.textContent = 'اپنے دل کی حالت دریافت کریں';
+                if (hadithText) hadithText.innerHTML = '"بے شک جسم میں گوشت کا ایک ٹکڑا ہے، جب یہ ٹھیک ہو تو سارا جسم ٹھیک ہے، اور جب یہ خراب ہو تو سارا جسم خراب ہے۔ یقیناً یہ دل ہے۔"<br><em style="color: var(--gold);">— نبی محمد ﷺ</em>';
+                if (descriptionText) descriptionText.innerHTML = 'یہ موافقت پذیر جائزہ <strong>حقیقی زندگی کے منظرناموں</strong> کو <strong>احمد زروق</strong> اور <strong>امام ماولود</strong> کی حکمت کے ساتھ ملا کر آپ کی روحانی بیماریوں کی شناخت اور علاج میں مدد کرتا ہے۔';
+                if (phasesText) phasesText.innerHTML = 'فیز 1: 18 حالاتی سوالات (~10 منٹ)<br>فیز 2: ضرورت پڑنے پر گہرائی میں جائزہ (~10 مزید منٹ)<br>رازداری: آپ کے جوابات آپ کے آلے پر محفوظ رہتے ہیں';
+                if (beginBtn) beginBtn.textContent = 'جائزہ شروع کریں';
+                
                 // Update all Phase 1 questions - scenarios AND options
                 for (let i = 0; i < 18; i++) {
                     PHASE1_QUESTIONS[i].scenario = URDU_SCENARIOS[i];
@@ -2056,6 +2069,19 @@
                 document.body.style.direction = 'ltr';
                 document.body.style.fontFamily = "'Inter', sans-serif";
                 document.querySelector('.subtitle').textContent = 'Spiritual Heart Health Assessment';
+                
+                // Restore welcome screen
+                const welcomeTitle = document.getElementById('welcome-title');
+                const hadithText = document.getElementById('hadith-text');
+                const descriptionText = document.getElementById('description-text');
+                const phasesText = document.getElementById('phases-text');
+                const beginBtn = document.getElementById('begin-btn');
+                
+                if (welcomeTitle) welcomeTitle.textContent = 'Discover the State of Your Heart';
+                if (hadithText) hadithText.innerHTML = '"Indeed, there is in the body a piece of flesh which, if sound, the entire body is sound, and if corrupt, the entire body is corrupt. Verily, it is the heart."<br><em style="color: var(--gold);">— Prophet Muhammad ﷺ</em>';
+                if (descriptionText) descriptionText.innerHTML = 'This adaptive assessment uses <strong>real-life scenarios</strong> combined with the wisdom of <strong>Ahmad Zarruq</strong> and <strong>Imam Mawlud</strong> to help you identify and treat spiritual diseases.';
+                if (phasesText) phasesText.innerHTML = 'Phase 1: 18 situational questions (~10 minutes)<br>Phase 2: Adaptive deep dive if needed (~10 more minutes)<br>Privacy: Your answers stay private on your device';
+                if (beginBtn) beginBtn.textContent = 'Begin Assessment';
                 
                 // Restore English - scenarios AND options
                 for (let i = 0; i < 18; i++) {
