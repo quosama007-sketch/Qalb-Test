@@ -1023,6 +1023,340 @@
             }
         ];
 
+        // PHASE 2 QUESTIONS - ADAPTIVE DEEP DIVE
+        const PHASE2_QUESTIONS = {
+            wealth: [
+                {
+                    id: 19,
+                    category: 'wealth',
+                    type: 'slider',
+                    scenario: "You have stable income and savings. A friend mentions economic crisis. You:",
+                    statement: "I immediately worry about losing everything and start hoarding/over-saving"
+                },
+                {
+                    id: 20,
+                    category: 'wealth',
+                    type: 'multiple',
+                    scenario: "A family member needs urgent money for medical treatment. You can afford it. You:",
+                    options: [
+                        { letter: 'A', text: 'Give immediately, whatever they need', score: 0 },
+                        { letter: 'B', text: 'Give but calculate how it affects your plans', score: 1 },
+                        { letter: 'C', text: 'Give minimum, feel pain doing it', score: 3 },
+                        { letter: 'D', text: 'Make excuses, suggest they find other sources', score: 4 },
+                        { letter: 'E', text: 'Avoid the situation completely', score: 4 }
+                    ]
+                },
+                {
+                    id: 21,
+                    category: 'wealth',
+                    type: 'multiple',
+                    scenario: "You have free time - 2 hours. You can pray, read Quran, OR work on side business. You:",
+                    options: [
+                        { letter: 'A', text: 'Always choose the money-making option', score: 4 },
+                        { letter: 'B', text: 'Usually choose work, feel guilty', score: 3 },
+                        { letter: 'C', text: 'Torn between both equally', score: 2 },
+                        { letter: 'D', text: 'Usually choose worship, but tempted by work', score: 1 },
+                        { letter: 'E', text: 'Easily choose worship over money', score: 0 }
+                    ]
+                },
+                {
+                    id: 22,
+                    category: 'wealth',
+                    type: 'slider',
+                    scenario: "You just got a major windfall - inheritance or bonus. Your first instinct is:",
+                    statement: "I immediately think about what MORE I can get/buy/invest in - never feel it's enough"
+                },
+                {
+                    id: 23,
+                    category: 'wealth',
+                    type: 'multiple',
+                    scenario: "Walking through an affluent neighborhood or scrolling social media. You see wealth. You:",
+                    options: [
+                        { letter: 'A', text: 'Intensely wish it was yours, feel deprived', score: 4 },
+                        { letter: 'B', text: 'Calculate how to get to that level', score: 4 },
+                        { letter: 'C', text: 'Feel envious of their lifestyle', score: 3 },
+                        { letter: 'D', text: 'Appreciate it but content with yours', score: 1 },
+                        { letter: 'E', text: 'Barely notice, focused on your blessings', score: 0 }
+                    ]
+                }
+            ],
+            self: [
+                {
+                    id: 24,
+                    category: 'self',
+                    type: 'slider',
+                    scenario: "You're in a room with people of lower education/status/wealth. You feel:",
+                    statement: "I feel superior to them and struggle to learn from or take advice from them"
+                },
+                {
+                    id: 25,
+                    category: 'self',
+                    type: 'multiple',
+                    scenario: "You do something praiseworthy - get promoted, help someone, achieve goal. You:",
+                    options: [
+                        { letter: 'A', text: 'Constantly replay how amazing you are', score: 4 },
+                        { letter: 'B', text: 'Feel very impressed with yourself', score: 3 },
+                        { letter: 'C', text: 'Think "I\'m pretty special" frequently', score: 3 },
+                        { letter: 'D', text: 'Brief satisfaction then move on', score: 1 },
+                        { letter: 'E', text: 'Immediately attribute it to Allah', score: 0 }
+                    ]
+                },
+                {
+                    id: 26,
+                    category: 'self',
+                    type: 'multiple',
+                    scenario: "You're about to give charity. No one is watching vs. people are watching. Your behavior:",
+                    options: [
+                        { letter: 'A', text: 'Only give when people see', score: 4 },
+                        { letter: 'B', text: 'Give MUCH more when people see', score: 4 },
+                        { letter: 'C', text: 'Give more when visible', score: 3 },
+                        { letter: 'D', text: 'Slightly affected by audience', score: 2 },
+                        { letter: 'E', text: 'Exactly the same, private or public', score: 0 }
+                    ]
+                },
+                {
+                    id: 27,
+                    category: 'self',
+                    type: 'slider',
+                    scenario: "Your good deeds/accomplishments are unknown to most people. This makes you feel:",
+                    statement: "I'm frustrated that people don't know my achievements - I want to be known and recognized"
+                },
+                {
+                    id: 28,
+                    category: 'self',
+                    type: 'multiple',
+                    scenario: "You know the right answer in class/meeting but stay silent because:",
+                    options: [
+                        { letter: 'A', text: 'Never stay silent, always speak up', score: 0 },
+                        { letter: 'B', text: 'Afraid of being judged if wrong', score: 3 },
+                        { letter: 'C', text: 'Don\'t want to seem like a know-it-all', score: 2 },
+                        { letter: 'D', text: 'Shy but will speak if pressed', score: 1 },
+                        { letter: 'E', text: 'Strategic silence, not fear-based', score: 0 }
+                    ]
+                }
+            ],
+            relationships: [
+                {
+                    id: 29,
+                    category: 'relationships',
+                    type: 'slider',
+                    scenario: "Best friend gets exactly what you've been praying for. You:",
+                    statement: "I wish Allah had given it to me instead, or I wish they'd lose it"
+                },
+                {
+                    id: 30,
+                    category: 'relationships',
+                    type: 'multiple',
+                    scenario: "Think of someone you dislike intensely. Last time you thought of them, you:",
+                    options: [
+                        { letter: 'A', text: 'Wished harm on them', score: 4 },
+                        { letter: 'B', text: 'Imagined revenge scenarios', score: 4 },
+                        { letter: 'C', text: 'Replayed their wrongs with anger', score: 3 },
+                        { letter: 'D', text: 'Neutral but cold thoughts', score: 2 },
+                        { letter: 'E', text: 'Made du\'a for them (genuinely)', score: 0 }
+                    ]
+                },
+                {
+                    id: 31,
+                    category: 'relationships',
+                    type: 'slider',
+                    scenario: "Someone wronged you years ago. Today you remember it. You:",
+                    statement: "I replay it vividly, feel the anger again, and plan how to get back at them someday"
+                },
+                {
+                    id: 32,
+                    category: 'relationships',
+                    type: 'multiple',
+                    scenario: "You have power/authority over someone (employee, student, child). When they make mistakes, you:",
+                    options: [
+                        { letter: 'A', text: 'Use your power to humiliate them', score: 4 },
+                        { letter: 'B', text: 'Punish excessively to assert dominance', score: 4 },
+                        { letter: 'C', text: 'Strict but fair', score: 1 },
+                        { letter: 'D', text: 'Kind but firm', score: 0 },
+                        { letter: 'E', text: 'Merciful and forgiving', score: 0 }
+                    ]
+                },
+                {
+                    id: 33,
+                    category: 'relationships',
+                    type: 'multiple',
+                    scenario: "Someone does something embarrassing in public. Your reaction is:",
+                    options: [
+                        { letter: 'A', text: 'Laugh and point it out to others', score: 4 },
+                        { letter: 'B', text: 'Mock them to make yourself feel better', score: 4 },
+                        { letter: 'C', text: 'Laugh inside but stay quiet', score: 2 },
+                        { letter: 'D', text: 'Feel empathy for them', score: 0 },
+                        { letter: 'E', text: 'Help them if possible', score: 0 }
+                    ]
+                }
+            ],
+            desires: [
+                {
+                    id: 34,
+                    category: 'desires',
+                    type: 'slider',
+                    scenario: "You're fasting or in i'tikaf. Inappropriate thoughts arise. You:",
+                    statement: "I entertain these thoughts and even seek out triggers despite the sacred time"
+                },
+                {
+                    id: 35,
+                    category: 'desires',
+                    type: 'multiple',
+                    scenario: "You know you shouldn't do something (waste time, eat excessively, buy unnecessarily). You:",
+                    options: [
+                        { letter: 'A', text: 'Do it anyway without hesitation', score: 4 },
+                        { letter: 'B', text: 'Do it while making excuses', score: 3 },
+                        { letter: 'C', text: 'Internal battle, usually give in', score: 2 },
+                        { letter: 'D', text: 'Resist most of the time', score: 1 },
+                        { letter: 'E', text: 'Firmly resist and redirect', score: 0 }
+                    ]
+                },
+                {
+                    id: 36,
+                    category: 'desires',
+                    type: 'multiple',
+                    scenario: "How much time daily do you spend fantasizing about unrealistic scenarios?",
+                    options: [
+                        { letter: 'A', text: 'Hours - most of my free time', score: 4 },
+                        { letter: 'B', text: 'Frequently throughout the day', score: 3 },
+                        { letter: 'C', text: 'Sometimes when bored', score: 2 },
+                        { letter: 'D', text: 'Rarely, mostly focused', score: 1 },
+                        { letter: 'E', text: 'Almost never, present in reality', score: 0 }
+                    ]
+                },
+                {
+                    id: 37,
+                    category: 'desires',
+                    type: 'slider',
+                    scenario: "When is the last time you seriously reflected on death and prepared for it?",
+                    statement: "I actively avoid all reminders of death - no funerals, no talks, no thinking about it"
+                },
+                {
+                    id: 38,
+                    category: 'desires',
+                    type: 'multiple',
+                    scenario: "Buffet or unlimited food available. You:",
+                    options: [
+                        { letter: 'A', text: 'Eat until very full, can\'t resist', score: 4 },
+                        { letter: 'B', text: 'Eat more than needed', score: 3 },
+                        { letter: 'C', text: 'Eat reasonable amount', score: 2 },
+                        { letter: 'D', text: 'Eat moderately, stop before full', score: 1 },
+                        { letter: 'E', text: 'Eat little, practice restraint', score: 0 }
+                    ]
+                }
+            ],
+            allah: [
+                {
+                    id: 39,
+                    category: 'allah',
+                    type: 'slider',
+                    scenario: "Entire day passes. You realize you barely thought of Allah. This happens:",
+                    statement: "Most days pass where I'm completely heedless of Allah from morning to night"
+                },
+                {
+                    id: 40,
+                    category: 'allah',
+                    type: 'multiple',
+                    scenario: "When major trial hits, your honest thoughts are:",
+                    options: [
+                        { letter: 'A', text: 'Allah is unfair, I don\'t deserve this', score: 4 },
+                        { letter: 'B', text: 'Why me? What did I do wrong?', score: 3 },
+                        { letter: 'C', text: 'This is too hard, complain to people', score: 3 },
+                        { letter: 'D', text: 'Struggling but trying to be patient', score: 1 },
+                        { letter: 'E', text: 'Alhamdulillah \'ala kulli hal', score: 0 }
+                    ]
+                },
+                {
+                    id: 41,
+                    category: 'allah',
+                    type: 'multiple',
+                    scenario: "Before making decisions or facing problems, who do you turn to FIRST?",
+                    options: [
+                        { letter: 'A', text: 'People - parents, spouse, friends', score: 4 },
+                        { letter: 'B', text: 'Google/online research', score: 3 },
+                        { letter: 'C', text: 'My own abilities and planning', score: 3 },
+                        { letter: 'D', text: 'People then Allah', score: 2 },
+                        { letter: 'E', text: 'Allah first, then means', score: 0 }
+                    ]
+                },
+                {
+                    id: 42,
+                    category: 'allah',
+                    type: 'slider',
+                    scenario: "When counting blessings vs. counting problems, you:",
+                    statement: "I focus almost entirely on what's missing/wrong in my life and rarely feel grateful"
+                },
+                {
+                    id: 43,
+                    category: 'allah',
+                    type: 'multiple',
+                    scenario: "You sin regularly but think:",
+                    options: [
+                        { letter: 'A', text: 'Allah will forgive anyway, no rush to repent', score: 4 },
+                        { letter: 'B', text: 'I have time, I\'ll fix it later', score: 3 },
+                        { letter: 'C', text: 'I\'m not that bad compared to others', score: 3 },
+                        { letter: 'D', text: 'Concerned but still procrastinating', score: 2 },
+                        { letter: 'E', text: 'Urgently seeking to repent now', score: 0 }
+                    ]
+                }
+            ],
+            emotional: [
+                {
+                    id: 44,
+                    category: 'emotional',
+                    type: 'multiple',
+                    scenario: "Last time you were very angry, what did you do?",
+                    options: [
+                        { letter: 'A', text: 'Yelled, said very hurtful things', score: 4 },
+                        { letter: 'B', text: 'Physically aggressive (hit/throw things)', score: 4 },
+                        { letter: 'C', text: 'Silent but seething for hours/days', score: 3 },
+                        { letter: 'D', text: 'Expressed anger but controlled', score: 1 },
+                        { letter: 'E', text: 'Changed position, made wudu, calmed down', score: 0 }
+                    ]
+                },
+                {
+                    id: 45,
+                    category: 'emotional',
+                    type: 'slider',
+                    scenario: "When something good happens, your thought pattern is:",
+                    statement: "I immediately think about what will go wrong or how it won't last"
+                },
+                {
+                    id: 46,
+                    category: 'emotional',
+                    type: 'multiple',
+                    scenario: "In debates, being RIGHT is:",
+                    options: [
+                        { letter: 'A', text: 'Essential - I can\'t let them win', score: 4 },
+                        { letter: 'B', text: 'Very important to me', score: 3 },
+                        { letter: 'C', text: 'Important but not crucial', score: 2 },
+                        { letter: 'D', text: 'Less important than truth', score: 1 },
+                        { letter: 'E', text: 'Unimportant - seeking truth together', score: 0 }
+                    ]
+                },
+                {
+                    id: 47,
+                    category: 'emotional',
+                    type: 'multiple',
+                    scenario: "Regarding your spiritual state, you believe:",
+                    options: [
+                        { letter: 'A', text: 'I\'m very advanced spiritually', score: 4 },
+                        { letter: 'B', text: 'I\'m better than most people', score: 3 },
+                        { letter: 'C', text: 'I\'m doing pretty well', score: 2 },
+                        { letter: 'D', text: 'I have a lot of work to do', score: 0 },
+                        { letter: 'E', text: 'I\'m in desperate need of purification', score: 0 }
+                    ]
+                },
+                {
+                    id: 48,
+                    category: 'emotional',
+                    type: 'slider',
+                    scenario: "In dealings with others (work, business, relationships), you:",
+                    statement: "I present myself as better than I am or hide my faults to get what I want"
+                }
+            ]
+        };
+
         const CATEGORIES = {
             wealth: { name: 'Wealth & Provision', nameAr: 'المَال وَالرِّزْق' },
             self: { name: 'Self & Ego', nameAr: 'النَّفْس' },
@@ -1038,6 +1372,9 @@
         let phase1Answers = {};
         let phase2Answers = {};
         let flaggedCategories = [];
+        let phase2Index = 0;
+        let phase2CurrentCategory = 0;
+        let phase2Questions = [];
 
         function startAssessment() {
             document.getElementById('welcome-screen').classList.add('hidden');
@@ -1153,50 +1490,177 @@
         }
 
         function startPhase2() {
-            alert('Phase 2 will be fully implemented in the next iteration. For now, proceeding to results...');
-            showResults();
+            // Build Phase 2 question queue from flagged categories
+            phase2Questions = [];
+            flaggedCategories.forEach(cat => {
+                PHASE2_QUESTIONS[cat].forEach(q => {
+                    phase2Questions.push(q);
+                });
+            });
+            
+            phase2Index = 0;
+            phase2Answers = {};
+            
+            document.getElementById('transition-screen').classList.add('hidden');
+            document.getElementById('phase2-screen').classList.remove('hidden');
+            currentPhase = 'phase2';
+            renderPhase2();
+        }
+
+        function renderPhase2() {
+            const question = phase2Questions[phase2Index];
+            const questionNumber = 19 + phase2Index; // Continue numbering from Phase 1
+            
+            let html = `
+                <div class="question">
+                    <div class="question-text">
+                        <span class="question-number">${questionNumber}</span>
+                        <strong>Scenario:</strong>
+                    </div>
+                    <div class="scenario">${question.scenario}</div>
+            `;
+            
+            if (question.type === 'multiple') {
+                html += `<div class="options">`;
+                question.options.forEach((opt, idx) => {
+                    const selected = phase2Answers[question.id] === idx ? 'selected' : '';
+                    html += `
+                        <div class="option ${selected}" onclick="selectOptionPhase2(${idx})">
+                            <span class="option-letter">${opt.letter}</span>
+                            <span>${opt.text}</span>
+                        </div>
+                    `;
+                });
+                html += `</div>`;
+            } else if (question.type === 'slider') {
+                const value = phase2Answers[question.id] !== undefined ? phase2Answers[question.id] : 2;
+                html += `
+                    <div class="slider-container">
+                        <div style="font-weight: 600; margin-bottom: 15px;">${question.statement}</div>
+                        <div class="slider-labels">
+                            <span>Never (0)</span>
+                            <span>Sometimes (2)</span>
+                            <span>Always (4)</span>
+                        </div>
+                        <input type="range" min="0" max="4" value="${value}" 
+                               oninput="updateSlider(this.value, ${question.id})" 
+                               onchange="selectSliderPhase2(this.value)">
+                        <div class="slider-value" id="slider-value-${question.id}">${value}</div>
+                    </div>
+                `;
+            }
+            
+            html += `</div>`;
+            
+            document.getElementById('questions-container-2').innerHTML = html;
+            updateProgressPhase2();
+            updateNavigationPhase2();
+        }
+
+        function selectOptionPhase2(index) {
+            const question = phase2Questions[phase2Index];
+            phase2Answers[question.id] = index;
+            renderPhase2();
+            document.getElementById('next-btn-2').disabled = false;
+        }
+
+        function updateSlider(value, questionId) {
+            document.getElementById(`slider-value-${questionId}`).textContent = value;
+        }
+
+        function selectSliderPhase2(value) {
+            const question = phase2Questions[phase2Index];
+            phase2Answers[question.id] = parseInt(value);
+            document.getElementById('next-btn-2').disabled = false;
+        }
+
+        function updateProgressPhase2() {
+            const progress = ((phase2Index + 1) / phase2Questions.length) * 100;
+            document.getElementById('progress-bar-2').style.width = progress + '%';
+            document.getElementById('progress-text-2').textContent = 
+                `Question ${19 + phase2Index} of ${18 + phase2Questions.length}`;
+        }
+
+        function updateNavigationPhase2() {
+            document.getElementById('next-btn-2').disabled = 
+                phase2Answers[phase2Questions[phase2Index].id] === undefined;
+        }
+
+        function nextQuestionPhase2() {
+            if (phase2Index < phase2Questions.length - 1) {
+                phase2Index++;
+                renderPhase2();
+            } else {
+                completeAssessment();
+            }
         }
 
         function goBackPhase2() {
-            // Implement phase 2 navigation
+            if (phase2Index > 0) {
+                phase2Index--;
+                renderPhase2();
+            }
         }
 
-        function nextPhase2() {
-            // Implement phase 2 progression
+        function completeAssessment() {
+            calculateAndShowResults();
         }
 
-        function showResults() {
+        function calculateAndShowResults() {
             document.getElementById('phase1-screen').classList.add('hidden');
-            document.getElementById('transition-screen').classList.add('hidden');
             document.getElementById('phase2-screen').classList.add('hidden');
             document.getElementById('results-screen').classList.remove('hidden');
 
-            // Calculate scores
+            // Calculate comprehensive scores
             const categoryScores = {};
-            let totalScore = 0;
-            let categoryCount = 0;
-
+            
+            // Phase 1 scores
             PHASE1_QUESTIONS.forEach(q => {
                 if (!categoryScores[q.category]) {
-                    categoryScores[q.category] = { total: 0, count: 0, max: 0 };
+                    categoryScores[q.category] = { phase1: 0, phase2: 0, totalPoints: 0, maxPoints: 0 };
                 }
                 const answerIndex = phase1Answers[q.id];
                 if (answerIndex !== undefined) {
-                    categoryScores[q.category].total += q.options[answerIndex].score;
-                    categoryScores[q.category].count++;
-                    categoryScores[q.category].max += 4; // Max score per question
+                    const score = q.options[answerIndex].score;
+                    categoryScores[q.category].phase1 += score;
+                    categoryScores[q.category].totalPoints += score;
+                    categoryScores[q.category].maxPoints += 4;
+                }
+            });
+            
+            // Phase 2 scores  
+            phase2Questions.forEach(q => {
+                if (!categoryScores[q.category]) {
+                    categoryScores[q.category] = { phase1: 0, phase2: 0, totalPoints: 0, maxPoints: 0 };
+                }
+                const answer = phase2Answers[q.id];
+                if (answer !== undefined) {
+                    let score;
+                    if (q.type === 'slider') {
+                        score = answer;
+                    } else {
+                        score = q.options[answer].score;
+                    }
+                    categoryScores[q.category].phase2 += score;
+                    categoryScores[q.category].totalPoints += score;
+                    categoryScores[q.category].maxPoints += 4;
                 }
             });
 
+            // Calculate percentages and overall health
+            let totalPercentage = 0;
+            let categoryCount = 0;
+            
             for (let cat in categoryScores) {
-                const percentage = (categoryScores[cat].total / categoryScores[cat].max) * 100;
-                categoryScores[cat].percentage = percentage;
-                totalScore += percentage;
+                const percentage = (categoryScores[cat].totalPoints / categoryScores[cat].maxPoints) * 100;
+                categoryScores[cat].diseasePercentage = percentage;
+                categoryScores[cat].healthPercentage = 100 - percentage;
+                totalPercentage += categoryScores[cat].healthPercentage;
                 categoryCount++;
             }
-
-            const overallHealth = 100 - (totalScore / categoryCount);
-
+            
+            const overallHealth = totalPercentage / categoryCount;
+            
             // Display overall score
             document.getElementById('overall-score').textContent = Math.round(overallHealth) + '%';
             
@@ -1222,7 +1686,7 @@
             // Display category breakdown
             let categoriesHTML = '';
             for (let cat in categoryScores) {
-                const healthPercent = 100 - categoryScores[cat].percentage;
+                const healthPercent = categoryScores[cat].healthPercentage;
                 const catData = CATEGORIES[cat];
                 
                 let status = '';
@@ -1254,12 +1718,129 @@
             }
             document.getElementById('categories-results').innerHTML = categoriesHTML;
 
-            // Generate prescriptions (simplified for now)
-            document.getElementById('prescriptions-container').innerHTML = `
-                <p style="text-align: center; color: var(--text-light); font-size: 1.1rem;">
-                    Detailed prescriptions based on Phase 2 assessment will be generated in the next iteration.<br>
-                    For now, focus on the categories marked as "Concerning" or "Critical" above.
-                </p>
+            // Generate prescriptions for top 3 worst categories
+            const sortedCategories = Object.keys(categoryScores).sort((a, b) => 
+                categoryScores[b].diseasePercentage - categoryScores[a].diseasePercentage
+            );
+            
+            const top3 = sortedCategories.slice(0, 3).filter(cat => categoryScores[cat].diseasePercentage > 20);
+            
+            let prescriptionsHTML = '';
+            if (top3.length > 0) {
+                top3.forEach(cat => {
+                    const prescription = generatePrescription(cat, categoryScores[cat]);
+                    if (prescription) {
+                        prescriptionsHTML += prescription;
+                    }
+                });
+            } else {
+                prescriptionsHTML = `
+                    <p style="text-align: center; color: var(--success); font-size: 1.2rem; padding: 40px;">
+                        ما شاء الله! Your spiritual heart is in excellent condition! 💚<br><br>
+                        Continue your beautiful spiritual practices and may Allah preserve your heart's purity.
+                    </p>
+                `;
+            }
+            
+            document.getElementById('prescriptions-container').innerHTML = prescriptionsHTML;
+        }
+
+        function generatePrescription(category, scores) {
+            const prescriptions = {
+                wealth: {
+                    icon: '💰',
+                    title: 'Attachment to Wealth',
+                    arabic: 'حُبّ المَال',
+                    understanding: 'The love of wealth can make the heart heedless of Allah and neglectful of the Hereafter. The Prophet ﷺ warned: "Two hungry wolves sent against a flock of sheep are not more destructive than a person\'s greed for wealth and status is to their religion."',
+                    immediate: '1. Give sadaqah this week - even if small, break the attachment. 2. Identify one unnecessary expense and redirect that money to charity. 3. Thank Allah for 10 specific blessings related to provision daily.',
+                    ongoing: '1. Practice weekly sadaqah - make it a regular habit, even $5. 2. Before any purchase, ask: "Do I need this or just want it?" Wait 24 hours. 3. Monthly: Calculate your wealth, then give more than you\'re comfortable with. 4. Read Surah Al-Takathur daily and reflect on its warning.',
+                    spiritual: 'Recite after Fajr: "Allahumma inni a\'udhu bika min al-hammi wal-hazani, wa a\'udhu bika min al-\'ajzi wal-kasali, wa a\'udhu bika min al-jubni wal-bukhli" (O Allah, I seek refuge in You from worry and grief, from helplessness and laziness, from cowardice and miserliness)',
+                    reminder: 'Remember: Your rizq is already written. No amount of wealth will go with you to the grave. The only thing that remains is what you spent for Allah\'s sake. Make your wealth work for your Akhirah, not against it.'
+                },
+                self: {
+                    icon: '👤',
+                    title: 'Diseases of the Ego',
+                    arabic: 'أَمْرَاض النَّفْس',
+                    understanding: 'Arrogance, vanity, and seeking praise are among the most destructive diseases. They block entry to Jannah. The Prophet ﷺ said: "No one with an atom\'s weight of arrogance will enter Paradise." These diseases blind us to our faults and make us see ourselves as better than others.',
+                    immediate: '1. This week, sincerely ask forgiveness from someone you wronged. 2. Do a good deed in complete secret - tell no one. 3. Serve someone you consider "below" you with genuine humility. 4. Write down 10 of your worst faults and keep them visible.',
+                    ongoing: '1. Daily: Reflect on your death and decay - you will return to dust. 2. Seek feedback from trusted people about your character flaws. 3. Serve others weekly without seeking recognition. 4. When praised, immediately say "Alhamdulillah" and attribute success to Allah. 5. Regularly visit graves to remember your end.',
+                    spiritual: 'After every Salah, make sincere dua: "Allahumma inni a\'udhu bika min al-kibri wal-\'ujbi war-riya\' was-sum\'ah" (O Allah, I seek refuge in You from arrogance, vanity, ostentation, and seeking reputation). Recite: "Subhana Rabbiya al-A\'la" (Glory be to my Lord, the Most High) 100x daily - affirming Allah\'s highness and your lowliness.',
+                    reminder: 'You are nothing but a slave of Allah. Every good in you is from Him, every fault is from your own soul. The greatest people were the most humble. Iblis was destroyed by arrogance - don\'t follow his path. True honor comes only from taqwa, not status or achievements.'
+                },
+                relationships: {
+                    icon: '😔',
+                    title: 'Envy & Hatred',
+                    arabic: 'حَسَد وَبُغْض',
+                    understanding: 'Envy is wishing for the removal of Allah\'s blessing from another. It\'s a poison that consumes good deeds like fire consumes wood. Hatred and rancor keep the heart chained to past hurts, preventing spiritual progress. These diseases disconnect you from Allah\'s mercy.',
+                    immediate: '1. When you feel envy, immediately make sincere dua FOR that person. 2. This week, give a gift to someone you envy. 3. List 10 blessings unique to you that others don\'t have. 4. Forgive one person who wronged you - let it go completely.',
+                    ongoing: '1. Daily dhikr: "Alhamdulillah \'ala kulli hal" 100x after Fajr (Praise Allah in all circumstances). 2. Practice making dua for people when you hear of their success. 3. Journal 5 specific blessings daily - train your heart to see YOUR gifts. 4. Give sadaqah when envious thoughts arise. 5. Actively congratulate and celebrate others\' success.',
+                    spiritual: 'Recite Surah Al-Falaq daily after every Salah: "Say: I seek refuge in the Lord of Daybreak... from the evil of the envier when he envies." Make this dua: "Allahumma inni a\'udhu bika min sharri nafsi" (O Allah, I seek refuge in You from the evil of my own soul). Forgive those who wronged you, for your own heart\'s sake.',
+                    reminder: 'The one who envies is rejecting Allah\'s wisdom in His distribution. Trust that Allah knows what\'s best for you. Your rizq is written - no one can take it. The cure for envy is contentment (qana\'ah), and contentment is the greatest treasure. As for those you dislike: their account is with Allah, not you. Free your heart by forgiving.'
+                },
+                desires: {
+                    icon: '🔥',
+                    title: 'Following Desires',
+                    arabic: 'اِتِّبَاع الهَوَى',
+                    understanding: 'Following desires (hawa) makes the self your god. Allah says: "Have you seen the one who takes his desire as his god?" Unchecked desires lead to spiritual blindness. They promise pleasure but deliver emptiness and regret. The heart enslaved to desires can never taste true freedom or peace.',
+                    immediate: '1. Fast Monday and Thursday this month. 2. Identify your biggest temptation and avoid its triggers this week. 3. When desire arises, make wudu immediately and pray 2 rakah. 4. Delete/block one source of temptation from your phone/computer.',
+                    ongoing: '1. Regular fasting (Mondays, Thursdays, white days) - the Prophet\'s prescription for controlling desires. 2. Lower your gaze consistently - train your eyes and heart. 3. Pray Tahajjud (even 2 rakah) - wake before Fajr to break the pattern of following nafs. 4. Marry if able, or fast frequently if not. 5. Never be alone with your phone in a weak moment - environmental discipline.',
+                    spiritual: 'Recite before sleep and when tempted: "A\'udhu bi-kalimat-illahi at-tammati min ghadabihi wa \'iqabihi wa sharri \'ibadihi wa min hamazat ash-shayatin wa an yahdurun" (I seek refuge in the perfect words of Allah from His anger, punishment, the evil of His servants, the whisperings of devils, and their presence). Increase in: "La hawla wa la quwwata illa billah" (There is no power nor strength except with Allah).',
+                    reminder: 'Your nafs (lower self) is your greatest enemy. It will never be satisfied until you discipline it. Every time you resist a desire for Allah\'s sake, you strengthen your soul and weaken shaytaan. The pleasure of obeying Allah far exceeds any forbidden pleasure. Remember death and the questioning - will this sin be worth it then?'
+                },
+                allah: {
+                    icon: '☪️',
+                    title: 'Heedlessness of Allah',
+                    arabic: 'غَفْلَة عَن الله',
+                    understanding: 'Ghaflah (heedlessness) is the root of all spiritual diseases. It means going through life forgetting Allah - the One who gave you everything. The heart becomes so busy with dunya that it forgets its true purpose: knowing, loving, and worshipping Allah. This is the most dangerous state because all other sins become easy.',
+                    immediate: '1. Set 5 prayer time reminders - stop what you\'re doing and pray on time this week. 2. After each Salah, sit for 2 minutes of silent dhikr (nothing else). 3. Before sleep, review your day and ask: "How much did I remember Allah today?" 4. Put a sticky note where you work: "Remember Allah".',
+                    ongoing: '1. Morning and evening adhkar DAILY without fail - this protects your heart. 2. Pray all 5 Salah with khushu\' - fight distraction. If your mind wanders, restart the Surah. 3. Weekly: Attend Jumu\'ah early, listen to khutbah, make dua. 4. Learn one Name of Allah each week and reflect on it throughout the day. 5. Read Quran daily with translation - even 1 page. Let Allah speak to your heart.',
+                    spiritual: 'Increase in: "SubhanAllah wa bihamdihi, SubhanAllah al-\'Adheem" 100x daily. After Fajr and Maghrib, complete your adhkar fully. Make this dua frequently: "Allahumma a\'inni \'ala dhikrika wa shukrika wa husni \'ibadatik" (O Allah, help me remember You, thank You, and worship You beautifully). Revive Tahajjud - even 2 rakah before Fajr connects you to Allah in His sacred time.',
+                    reminder: 'You will die. This life is temporary. Every moment of heedlessness is a moment wasted. But Allah is Most Merciful - He accepts those who return. Start now. Even if you\'ve been heedless for years, turn to Him NOW. He is waiting. Make your heart\'s constant state one of remembrance. Let Allah be your first thought in the morning and last thought at night. This is true life.'
+                },
+                emotional: {
+                    icon: '😤',
+                    title: 'Anger & Negative Thoughts',
+                    arabic: 'غَضَب وَسُوء الظَّنّ',
+                    understanding: 'Uncontrolled anger destroys relationships, causes regret, and distances you from Allah\'s mercy. The Prophet ﷺ said: "The strong person is not the one who can wrestle, but the one who controls himself in anger." Negative thoughts (su\' al-dhann) poison your perception and lead to suspicion, anxiety, and injustice toward others.',
+                    immediate: '1. When anger arises this week, immediately change position (sit if standing, lie if sitting). 2. Make wudu when angry - water cools the fire. 3. Stay silent when angry - speak only after calming. 4. Practice assuming the BEST about others\' intentions this week.',
+                    ongoing: '1. Fast regularly - it cools temperament and teaches self-control. 2. When negative thoughts about someone arise, replace them with 3 good assumptions. 3. Avoid argumentative people and topics that trigger you. 4. Daily: Reflect on how Allah forgives YOUR mistakes, so forgive others. 5. Seek anger management if needed - it\'s part of purification.',
+                    spiritual: 'When angry, seek refuge: "A\'udhu billahi min ash-shaytaan ir-rajeem" (I seek refuge in Allah from the cursed devil). The Prophet ﷺ taught: Anger is from shaytaan. Repeat: "La hawla wa la quwwata illa billah" (There is no power except with Allah). Make istighfar (seek forgiveness) 100x daily - it softens the heart. Before judging anyone, remember: Allah knows, you don\'t.',
+                    reminder: 'Every moment of anger damages your heart and relationships. Every negative thought is often wrong. Most people are doing their best. You see only actions, Allah sees intentions. The one who controls anger earns Allah\'s love. Train yourself: respond, don\'t react. Pause. Breathe. Remember Allah. Then act. This is strength. This is wisdom.'
+                }
+            };
+            
+            const p = prescriptions[category];
+            if (!p) return '';
+            
+            return `
+                <div class="prescription">
+                    <div class="prescription-header">
+                        <div class="prescription-icon">${p.icon}</div>
+                        <div>
+                            <div class="prescription-title">${p.title}</div>
+                            <div class="prescription-arabic">${p.arabic}</div>
+                        </div>
+                    </div>
+                    <div class="prescription-section">
+                        <div class="prescription-section-title">💡 Understanding</div>
+                        <div class="prescription-content">${p.understanding}</div>
+                    </div>
+                    <div class="prescription-section">
+                        <div class="prescription-section-title">🔥 Immediate Action (This Week)</div>
+                        <div class="prescription-content">${p.immediate}</div>
+                    </div>
+                    <div class="prescription-section">
+                        <div class="prescription-section-title">🌱 Ongoing Practice (40 Days)</div>
+                        <div class="prescription-content">${p.ongoing}</div>
+                    </div>
+                    <div class="prescription-section">
+                        <div class="prescription-section-title">📿 Spiritual Remedy</div>
+                        <div class="prescription-content">${p.spiritual}</div>
+                    </div>
+                    <div class="power-reminder">
+                        <strong>⚡ Power Reminder:</strong> ${p.reminder}
+                    </div>
+                </div>
             `;
         }
 
@@ -1267,6 +1848,8 @@
             phase1Index = 0;
             phase1Answers = {};
             phase2Answers = {};
+            phase2Questions = [];
+            phase2Index = 0;
             flaggedCategories = [];
             
             document.getElementById('results-screen').classList.add('hidden');
